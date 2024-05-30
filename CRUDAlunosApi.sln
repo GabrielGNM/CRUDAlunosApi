@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAlunosApi", "CRUDAlunosApi.csproj", "{646B79E1-9C51-40BE-88C1-52AFD711CEE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{1F61D1AF-29DC-489D-A527-FE815EFADFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", ".\Domain\Domain.csproj", "{1F61D1AF-29DC-489D-A527-FE815EFADFFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "..\Infra\Infra.csproj", "{0C0071A2-C831-4308-B7B0-CC1DA64DAF3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", ".\Infra\Infra.csproj", "{0C0071A2-C831-4308-B7B0-CC1DA64DAF3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "..\Application\Application.csproj", "{ED9AEBE9-2517-4AF3-BE73-31514485E08F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", ".\Application\Application.csproj", "{ED9AEBE9-2517-4AF3-BE73-31514485E08F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
