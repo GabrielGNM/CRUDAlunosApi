@@ -9,5 +9,6 @@ namespace Domain.Interface
         Aluno? BuscarAlunoPorMatricula(string matricula);
         IEnumerable<Aluno> BuscarAlunosPorNome(string nome);
         Aluno? AtualizarAluno(string matricula, AlunoDto alunoAtualizado);
+        IEnumerable<Aluno> BuscarTodosAlunos();
     }
 }

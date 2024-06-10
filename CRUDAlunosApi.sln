@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRUDAlunosApi", "CRUDAlunosApi.csproj", "{646B79E1-9C51-40BE-88C1-52AFD711CEE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{1F61D1AF-29DC-489D-A527-FE815EFADFFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", ".\Domain\Domain.csproj", "{1F61D1AF-29DC-489D-A527-FE815EFADFFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{0C0071A2-C831-4308-B7B0-CC1DA64DAF3E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", ".\Infra\Infra.csproj", "{0C0071A2-C831-4308-B7B0-CC1DA64DAF3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{ED9AEBE9-2517-4AF3-BE73-31514485E08F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", ".\Application\Application.csproj", "{ED9AEBE9-2517-4AF3-BE73-31514485E08F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "..\FrontEnd\Presentation.csproj", "{032FC7DC-604F-406C-A0C7-71BA5FA492EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{646B79E1-9C51-40BE-88C1-52AFD711CEE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{646B79E1-9C51-40BE-88C1-52AFD711CEE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{646B79E1-9C51-40BE-88C1-52AFD711CEE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{646B79E1-9C51-40BE-88C1-52AFD711CEE2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F61D1AF-29DC-489D-A527-FE815EFADFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F61D1AF-29DC-489D-A527-FE815EFADFFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F61D1AF-29DC-489D-A527-FE815EFADFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{ED9AEBE9-2517-4AF3-BE73-31514485E08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9AEBE9-2517-4AF3-BE73-31514485E08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED9AEBE9-2517-4AF3-BE73-31514485E08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032FC7DC-604F-406C-A0C7-71BA5FA492EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032FC7DC-604F-406C-A0C7-71BA5FA492EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032FC7DC-604F-406C-A0C7-71BA5FA492EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032FC7DC-604F-406C-A0C7-71BA5FA492EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

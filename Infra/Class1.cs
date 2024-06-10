@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-
-namespace Infra
+﻿namespace Infra
 {
     public class Class1
     {
-        public string GitTest { get; set; }
+        public string? GitTest { get; set; }
     }
 }

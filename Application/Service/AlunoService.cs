@@ -7,24 +7,43 @@ namespace Application.Service
 {
     public class AlunoService : IAlunoService
     {
-        private static List<Aluno> alunos = new List<Aluno>();
-        public Aluno AtualizarAluno(string matricula, AlunoDto atualizacao)
+        private static List<Aluno> ListaAlunos = [];
+        public Aluno? AtualizarAluno(string matricula, AlunoDto atualizacao)
         {
             var alunoExistente = BuscarAlunoPorMatricula(matricula);
+            if (alunoExistente != null)
+            {
+                var alunoAtualizado = Aluno.AtualizaAluno(atualizacao, alunoExistente!, ListaAlunos);
 
-            var alunoAtualizado = Aluno.AtualizaAluno(atualizacao, alunoExistente);
-
-            return alunoAtualizado;
+                return alunoAtualizado;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public Aluno? BuscarAlunoPorMatricula(string matricula)
         {
-            return alunos.FirstOrDefault(a => a.Matricula == matricula);
+            try
+            {
+                return ListaAlunos.FirstOrDefault(a => a.Matricula == matricula);
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public IEnumerable<Aluno> BuscarAlunosPorNome(string nome)
         {
-            return alunos.Where(a => a.Nome.Contains(nome, StringComparison.OrdinalIgnoreCase)).ToList();
+            return ListaAlunos.Where(a => a.Nome.Contains(nome, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        public IEnumerable<Aluno> BuscarTodosAlunos()
+        {
+            return ListaAlunos;
         }
 
         public Aluno CadastrarAluno(AlunoDto input)
@@ -32,7 +51,8 @@ namespace Application.Service
             var novoAluno = Aluno.CriaAluno(input);
             var alunoExistente = BuscarAlunoPorMatricula(novoAluno.Matricula);
             if (alunoExistente != null) throw new ValidationException("Aluno já Cadastrado");
-            return alunoExistente;            
+            ListaAlunos.Add(novoAluno);
+            return novoAluno;            
         }
     }
 }

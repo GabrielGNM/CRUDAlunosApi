@@ -28,6 +28,17 @@ namespace CadastroAlunosApi.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet("buscar-todos")]
+        public ActionResult<IEnumerable<Aluno>> BuscarTodos()
+        {
+            var alunos = _alunoService.BuscarTodosAlunos();
+            if (alunos == null || !alunos.Any())
+            {
+                return NotFound("Nenhum aluno encontrado.");
+            }
+            return Ok(alunos);
+        }
+
         [HttpPost("cadastrar")]
         public ActionResult<Aluno> CadastrarAluno([FromBody] AlunoDto novoAluno)
         {

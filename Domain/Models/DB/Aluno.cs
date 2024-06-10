@@ -54,7 +54,7 @@ public class Aluno
         {
             throw new ValidationException("CPF/CNPJ é obrigatório.");
         }
-        if (aluno.Telefone.ToString().Length < 10)
+        if (aluno.Telefone == null || aluno.Telefone.ToString()!.Length < 10)
         {
             throw new ValidationException("Telefone deve conter pelo menos 10 dígitos.");
         }
@@ -77,7 +77,7 @@ public class Aluno
         return $"{primeiroNome}.{primeirosTresCpfCnpj}{ultimoNome}{ultimosTresCpfCnpj}-{dataNascimentoFormatada}";
     }
 
-    public static Aluno AtualizaAluno(AlunoDto atualizacao, Aluno alunoExistente )
+    public static Aluno AtualizaAluno(AlunoDto atualizacao, Aluno alunoExistente, List<Aluno> ListaAlunos)
     {
         alunoExistente.Email = atualizacao.Email ?? alunoExistente.Email;
         alunoExistente.Endereco = atualizacao.Endereco ?? alunoExistente.Endereco;
@@ -85,7 +85,7 @@ public class Aluno
         alunoExistente.CpfCnpj = atualizacao.CpfCnpj ?? alunoExistente.CpfCnpj;
         alunoExistente.Nome = atualizacao.Nome ?? alunoExistente.Nome;
         alunoExistente.DataNascimento = atualizacao.DataNascimento ?? alunoExistente.DataNascimento;
-
+        
         return alunoExistente;
     }
     private static string RemoveAcentos(string texto)
