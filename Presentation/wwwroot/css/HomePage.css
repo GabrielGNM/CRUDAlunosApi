@@ -1,0 +1,33 @@
+﻿body {
+    font-family: sans-serif;
+}
+
+#menu {
+    margin-bottom: 20px;
+}
+
+    #menu ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    #menu li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    #menu a {
+        text-decoration: none;
+        color: black;
+    }
+
+#buscar-aluno, #buscar-todos, #cadastrar-aluno, #deletar-aluno {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse

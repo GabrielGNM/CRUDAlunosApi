@@ -4,7 +4,7 @@ using Domain.Models.DB;
 using Domain.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CadastroAlunosApi.Controllers
+namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -28,7 +28,7 @@ namespace CadastroAlunosApi.Controllers
             return Ok(resultado);
         }
 
-        [HttpGet("buscar-todos")]
+        [HttpGet("alunos")]
         public ActionResult<IEnumerable<Aluno>> BuscarTodos()
         {
             var alunos = _alunoService.BuscarTodosAlunos();
