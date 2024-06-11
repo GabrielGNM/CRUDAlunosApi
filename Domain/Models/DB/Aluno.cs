@@ -54,10 +54,9 @@ public class Aluno
         {
             throw new ValidationException("CPF/CNPJ é obrigatório.");
         }
-        if (aluno.Telefone == null || aluno.Telefone.ToString()!.Length < 10)
-        {
-            throw new ValidationException("Telefone deve conter pelo menos 10 dígitos.");
-        }
+        if (aluno.Telefone == null) throw new ValidationException("Telefone é obrigatorio.");
+         else if (aluno.Telefone.ToString()!.Length < 11) throw new ValidationException("Telefone deve conter pelo menos 11 dígitos.ex:31912345678");
+        
         if (aluno.DataNascimento == default(DateTime))
         {
             throw new ValidationException("Data de nascimento é obrigatória.");
