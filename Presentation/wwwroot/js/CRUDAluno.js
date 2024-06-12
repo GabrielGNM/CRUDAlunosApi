@@ -1,4 +1,7 @@
-// Função para realizar requisições à API
+
+
+
+// Funï¿½ï¿½o para realizar requisiï¿½ï¿½es ï¿½ API
 async function requisicaoAPI(url, metodo, dados = null) {
     const requisicao = await fetch(url, {
         method: metodo,
@@ -12,70 +15,145 @@ async function requisicaoAPI(url, metodo, dados = null) {
     return json;
 }
 
-// Função para buscar alunos por nome
-async function buscarAlunosPorNome(nome) {
-    const url = `http://localhost:5000/api/aluno/buscar/${nome}`; // Replace with your API URL
+
+//converte data no formato string para o formato dd/mm/aaaa
+const formatDate = function(data) {
+    // Converter a string para um objeto Date
+    let dateObject = new Date(data);
+
+    // Acessar os componentes individuais da data
+    let year = dateObject.getUTCFullYear();
+    let month = (dateObject.getUTCMonth() + 1).toString().padStart(2, '0'); 
+    let day = dateObject.getUTCDate().toString().padStart(2, '0');
+
+    // Formatar a data no formato MM/DD/YYYY
+    let formattedDate = `${day}/${month}/${year}`;
+
+    return formattedDate
+}
+
+
+//Retorna todos os registros
+async function buscarAlunosTodos() {
+    const url = `https://localhost:5000/api/Aluno/alunos`; // Replace with your API URL
     const resultado = await requisicaoAPI(url, 'GET');
 
-    // Exibir resultado na tabela (substitua pela sua lógica de exibição)
-    console.log(resultado); // Exemplo de exibição no console
-    // Atualize a tabela com os dados recebidos (implemente a atualização da tabela)
+    if (Array.isArray(resultado)) {
+        let content = document.getElementById('contentAlunos')
+        let contentLine = ''
+        resultado.forEach(e => {
+            date = formatDate(e.dataNascimento)
+            contentLine += `
+            <tr >
+                <td>${e.nome}</td>
+                <td>${date}</td>
+                <td>${e.telefone}</td>
+                <td>${e.email}</td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon name='edit'></box-icon></a></td>
+                <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid' name='user-x'></box-icon></a></td>
+            </tr>
+            `        
+        });
+        content.innerHTML = contentLine
+    }      
 }
 
-// Função para cadastrar um novo aluno
-async function cadastrarAluno(aluno) {
-    const url = 'http://localhost:5000/api/aluno/cadastrar'; // Replace with your API URL
-    const novoAluno = {
-        ...aluno, // Spread operator to include all properties from 'aluno' object
-    };
-    const novoAlunoCriado = await requisicaoAPI(url, 'POST', novoAluno);
 
-    // Exibir mensagem de sucesso ou erro (implemente a lógica de exibição)
-    console.log(novoAlunoCriado); // Exemplo de exibição no console
-    // Exibir mensagem de sucesso ou erro ao usuário (implemente a lógica de feedback)
-}
+buscarAlunosTodos()
 
-// Função para buscar um aluno por matrícula
-async function buscarAlunoPorMatricula(matricula) {
-    const url = `http://localhost:5000/api/aluno/${matricula}`; // Replace with your API URL
-    const aluno = await requisicaoAPI(url, 'GET');
 
-    // Exibir detalhes do aluno (substitua pela sua lógica de exibição)
-    console.log(aluno); // Exemplo de exibição no console
-    // Preencha o formulário de edição com os dados do aluno (implemente a edição)
-}
 
-// Função para atualizar um aluno
-async function atualizarAluno(matricula, dadosAtualizados) {
-    const url = `http://localhost:5000/api/aluno/atualizar/${matricula}`; // Replace with your API URL
-    const resultado = await requisicaoAPI(url, 'PUT', dadosAtualizados);
 
-    // Exibir mensagem de sucesso ou erro (implemente a lógica de exibição)
-    console.log(resultado); // Exemplo de exibição no console
-    // Exibir mensagem de sucesso ou erro ao usuário (implemente a lógica de feedback)
-}
 
-// Exemplos de uso das funções
 
-// Buscar alunos por nome
-buscarAlunosPorNome('João Silva');
 
-// Cadastrar um novo aluno (assuming you have a form to collect data)
-const novoAluno = {
-    nome: document.getElementById('nomeInput').value, // Replace with your input element ID
-    matricula: document.getElementById('matriculaInput').value, // Replace with your input element ID
-    curso: document.getElementById('cursoInput').value, // Replace with your input element ID
-    // ... other fields (implement logic to get data from your form)
-};
-cadastrarAluno(novoAluno);
 
-// Buscar um aluno por matrícula
-buscarAlunoPorMatricula('12345678');
 
-// Atualizar um aluno (assuming you have an edit form pre-filled with data)
-const atualizacao = {
-    nome: document.getElementById('editNomeInput').value, // Replace with your edit input element ID
-    curso: document.getElementById('editCursoInput').value, // Replace with your edit input element ID
-    // ... other fields to update (implement logic to get data from your edit form)
-};
-atualizarAluno('87654321', atualizacao)
+
+
+
+
+
+
+
+// // Funï¿½ï¿½o para realizar requisiï¿½ï¿½es ï¿½ API
+// async function requisicaoAPI(url, metodo, dados = null) {
+//     const requisicao = await fetch(url, {
+//         method: metodo,
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: dados ? JSON.stringify(dados) : null
+//     });
+
+//     const json = await requisicao.json();
+//     return json;
+// }
+
+// // Funï¿½ï¿½o para buscar alunos por nome
+// async function buscarAlunosPorNome(nome) {
+//     const url = `http://localhost:5000/api/aluno/buscar/${nome}`; // Replace with your API URL
+//     const resultado = await requisicaoAPI(url, 'GET');
+
+//     // Exibir resultado na tabela (substitua pela sua lï¿½gica de exibiï¿½ï¿½o)
+//     console.log(resultado); // Exemplo de exibiï¿½ï¿½o no console
+//     // Atualize a tabela com os dados recebidos (implemente a atualizaï¿½ï¿½o da tabela)
+// }
+
+// // Funï¿½ï¿½o para cadastrar um novo aluno
+// async function cadastrarAluno(aluno) {
+//     const url = 'http://localhost:5000/api/aluno/cadastrar'; // Replace with your API URL
+//     const novoAluno = {
+//         ...aluno, // Spread operator to include all properties from 'aluno' object
+//     };
+//     const novoAlunoCriado = await requisicaoAPI(url, 'POST', novoAluno);
+
+//     // Exibir mensagem de sucesso ou erro (implemente a lï¿½gica de exibiï¿½ï¿½o)
+//     console.log(novoAlunoCriado); // Exemplo de exibiï¿½ï¿½o no console
+//     // Exibir mensagem de sucesso ou erro ao usuï¿½rio (implemente a lï¿½gica de feedback)
+// }
+
+// // Funï¿½ï¿½o para buscar um aluno por matrï¿½cula
+// async function buscarAlunoPorMatricula(matricula) {
+//     const url = `http://localhost:5000/api/aluno/${matricula}`; // Replace with your API URL
+//     const aluno = await requisicaoAPI(url, 'GET');
+
+//     // Exibir detalhes do aluno (substitua pela sua lï¿½gica de exibiï¿½ï¿½o)
+//     console.log(aluno); // Exemplo de exibiï¿½ï¿½o no console
+//     // Preencha o formulï¿½rio de ediï¿½ï¿½o com os dados do aluno (implemente a ediï¿½ï¿½o)
+// }
+
+// // Funï¿½ï¿½o para atualizar um aluno
+// async function atualizarAluno(matricula, dadosAtualizados) {
+//     const url = `http://localhost:5000/api/aluno/atualizar/${matricula}`; // Replace with your API URL
+//     const resultado = await requisicaoAPI(url, 'PUT', dadosAtualizados);
+
+//     // Exibir mensagem de sucesso ou erro (implemente a lï¿½gica de exibiï¿½ï¿½o)
+//     console.log(resultado); // Exemplo de exibiï¿½ï¿½o no console
+//     // Exibir mensagem de sucesso ou erro ao usuï¿½rio (implemente a lï¿½gica de feedback)
+// }
+
+// // Exemplos de uso das funï¿½ï¿½es
+
+// // Buscar alunos por nome
+// buscarAlunosPorNome('Joï¿½o Silva');
+
+// // Cadastrar um novo aluno (assuming you have a form to collect data)
+// const novoAluno = {
+//     nome: document.getElementById('nomeInput').value, // Replace with your input element ID
+//     matricula: document.getElementById('matriculaInput').value, // Replace with your input element ID
+//     curso: document.getElementById('cursoInput').value, // Replace with your input element ID
+//     // ... other fields (implement logic to get data from your form)
+// };
+// cadastrarAluno(novoAluno);
+
+// // Buscar um aluno por matrï¿½cula
+// buscarAlunoPorMatricula('12345678');
+
+// // Atualizar um aluno (assuming you have an edit form pre-filled with data)
+// const atualizacao = {
+//     nome: document.getElementById('editNomeInput').value, // Replace with your edit input element ID
+//     curso: document.getElementById('editCursoInput').value, // Replace with your edit input element ID
+//     // ... other fields to update (implement logic to get data from your edit form)
+// };
+// atualizarAluno('87654321', atualizacao)
