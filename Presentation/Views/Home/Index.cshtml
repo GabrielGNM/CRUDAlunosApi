@@ -68,6 +68,7 @@
                             <th scope="col">Telefone</th>
                             <th scope="col">Email</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +79,7 @@
                             <td>Mark</td>
                             <td>Otto</td>
                             <td><a href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon name='edit'></box-icon></a></td>
+                            <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid' name='user-x'></box-icon></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -278,11 +280,30 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fechar</button>
                     <button type="button" class="btn btn-primary ">Salvar</button>
-                    <button type="button" class="btn btn-danger ">Excluir</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal Apagar Aluno -->
+<div class="modal fade" id="apagarAluno" tabindex="-1" aria-labelledby="apagarAlunoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="apagarAlunoLabel">Apagar Aluno</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Deseja apagar o registro deste Aluno?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger">Apagar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
