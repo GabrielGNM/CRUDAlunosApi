@@ -1,0 +1,299 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Instituto Reciclar</title>
+</head>
+
+<body>
+    <div class="main container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
+            <a href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="~/assets/logo.jpeg" class="d-block" alt="..." style="width: 70px; margin-right: 4px">
+                
+                    <p class="fs-4 text-body-tertiary">Instituto Reciclar</p>
+                              
+            </a>
+            <ul class="nav nav-pills ">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                        <i class="fa fa-1x fa-facebook" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-1x fa-instagram"
+                            aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-1x fa-linkedin"
+                            aria-hidden="true"></i></a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <button type="button" class="btn btn-primary">DOE AGORA</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <button type="button" class="btn btn-warning">ENGLISH</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="areaRestrita.html" class="nav-link">
+                        <button type="button" class="btn btn-secondary">Area Restrita</button>
+                    </a>
+                </li>
+            </ul>
+        </header>
+        <nav class="nav justify-content-between fw-semibold">
+            <a class="nav-link text-secondary-emphasis dropdown" aria-current="page" href="#">
+                <a class="nav-link text-secondary-emphasis dropdown-toggle" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    SOBRE O RECICLAR
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">QUEM SOMOS</a></li>
+                    <li><a class="dropdown-item" href="#">ESTATUTO/a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">PREMIAÇÕES</a></li>
+                </ul>
+            </a>
+            <a class="nav-link text-secondary-emphasis" href="#">COMO ATUAMOS</a>
+            <a class="nav-link text-secondary-emphasis" href="#">PARCEIROS</a>
+            <a class="nav-link text-secondary-emphasis" href="#">COLABORE</a>
+            <a class="nav-link text-secondary-emphasis" href="#">TRANSPARÊNCIA</a>
+            <a class="nav-link text-secondary-emphasis" href="#">CONHECIMENTO</a>
+            <a class="nav-link text-secondary-emphasis" href="#">NOTÍCIAS</a>
+            <a class="nav-link text-secondary-emphasis" href="#">CONTATO</a>
+        </nav>
+        <div>
+            <div id="carouselExampleCaptions" class="carousel slide">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner" style="height: 500px;">
+                    <div class="carousel-item active" style="margin-top: -200px">
+                        <img src="~/assets/carrousel01.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="margin-top: -200px">Apoie a inserção profissional de jovens e ajude a transformar
+                                vidas!</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item active" style="margin-top: -200px">
+                        <img src="~/assets/carrousel02.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="margin-top: -150px">Prêmio Nelson Mandela 2023</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item active" style="margin-top: -200px">
+                        <img src="~/assets/carrousel03.jpg" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 style="margin-top: -270px">Apoie a entrada de jovens profissionais no mercado de
+                                trabalho</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div style="margin-top: 80px">
+            <div class="container bg-info">
+                <div class="row text-center" style="padding:8px">
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>+220</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>jovens atendidos pelo programa educacional</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>90%</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>de empregabilidade ao término do programa</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>1.066</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>voluntários ativos ao longo do ano</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>926</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>jovens beneficiados em projetos de mentoria externa com
+                            empresas e organizações parceiras</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>3.106</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>professores da rede pública de ensino formados no programa
+                            de apoio à educação pública – que visa a capacitação dos profissionais de educação</p>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="row text-white">
+                            <h1>72mil</h1>
+                        </div>
+                        <div class="row text-secondary-emphasis">
+                            <p style="font-size:small;"></p>estudantes da rede pública impactados por meio do programa
+                            de apoio à educação pública</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col">
+                    <img src="~/assets/secretary.jpg" class="d-block" alt="..." style="width: 500px;">
+                </div>
+                <div class="col" style="padding: 8px;">
+                    <span style="font-size: 30px;">QUEM SOMOS</span>
+                    <p style="font-size: 20px;">Em 1995, um grupo de empresários uniu-se em prol de um ideal comum:
+                        realizar um programa de formação profissional transformador que fosse economicamente viável,
+                        socialmente justo e ambientalmente correto. Dessa combinação nasceu o Instituto Reciclar.</p>
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center" style="margin-top:30px; max-width:max-content">
+                <div class="col mx-2 bg-primary rounded text-white text-center" style="padding: 20px;">
+                    <div class="mb-3">
+                        <i class="fa-2x fa-solid fa-list"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="fw-bold" style="font-size: 25px;">VISÃO</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 20px;">Ser referência na formação humana e profissional de jovens,
+                            contribuindo para a construção de um país justo e com oportunidades para todos.</span>
+                    </div>
+                </div>
+                <div class="col mx-2 bg-primary rounded text-white text-center" style="padding: 20px;">
+                    <div class="mb-3">
+                        <i class="fa-2x fa-solid fa-list"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="fw-bold" style="font-size: 25px;">MISSÃO</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 20px;">Desenvolver jovens para empreender na vida, no trabalho e na
+                            comunidade por meio de um modelo educativo inovador, qualificação técnica e apoio à
+                            empregabilidade.</span>
+                    </div>
+                </div>
+                <div class="col mx-2 bg-primary rounded text-white text-center" style="padding: 20px;">
+                    <div class="mb-3">
+                        <i class="fa-2x fa-solid fa-list"></i>
+                    </div>
+                    <div class="mb-3">
+                        <span class="fw-bold" style="font-size: 25px;">VALORES</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 20px;">Transparência | Espírito colaborativo | Disposição para inovar |
+                            Respeito à singularidade | Trabalho em rede</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+
+        <div style="margin-top: 30px; width: 100%" >
+            <div class="bg-info-subtle">
+                <div class="container" style="max-width: 900px; padding:20px">
+                    <div class="row text-secondary-emphasis ">
+                        <div class="col ">
+                            <div><img src="~/assets/logo.jpeg" class="d-block" alt="..." style="width: 170px; margin-right: 4px"></div>
+                            <p class="fw-bolder" style="margin-top: 10px; font-size:20px">Instituto Reciclar</p>
+                        </div>
+                        <div class="col">
+                            <p class="fw-bold">CONTATO</p>
+
+                            <p>
+                                Av. Presidente Altino, 973
+                                Jaguaré – São Paulo, SP
+                            </p>
+
+                            <p>
+                                Telefone: (11) 3768-3607
+                                E-mail: reciclar@reciclar.org.br
+                            </p>
+
+                            <p>
+                                Horário de Atendimento
+                                Segunda a Sexta:
+                                8h00 – 18h00
+                            </p>
+                        </div>
+                        <div class="col">
+                            <p class="fw-bold">NEWSLETTER</p>
+
+                            <p>Fique por dentro! Cadastre seu e-mail no campo abaixo para receber notícias e informações
+                                sobre a gente!</p>
+                        </div>
+                        <div class="col">
+                            <p class="fw-bold">SIGA A GENTE</p>
+
+                            <p>
+                                <i class="fa fa-1x fa-facebook md-4" aria-hidden="true" style="margin-right: 10px;"></i>
+                                <i class="fa fa-1x fa-instagram" aria-hidden="true" style="margin-right: 10px;"></i>
+                                <i class="fa fa-1x fa-linkedin" aria-hidden="true" style="margin-right: 10px;"></i>
+                            </p>
+                            <p class="fw-bold">SELOS E PREMIAÇÕES</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/074fbb8e37.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
