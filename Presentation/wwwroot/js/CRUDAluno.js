@@ -58,7 +58,7 @@ function adiconaEventoEditar() {
                 matricula: row.cells[0].textContent.trim(),
             };
 
-            console.log("Matrícula do aluno:", aluno.matricula);
+            // console.log("Matrícula do aluno:", aluno.matricula);
 
             fetch(`https://localhost:5000/api/Aluno/${aluno.matricula}`, {
                 method: 'GET',
@@ -82,6 +82,22 @@ function adiconaEventoEditar() {
 }
 
 
+
+// Adicionar numero de matricula ao modal excluir
+function addMatriculaModalExcluir() {
+document.querySelectorAll('.btnDeleteAluno').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Evitar comportamento padrão do link
+        console.log(this);
+        const matricula = this.closest('tr').querySelector('.matricula').innerText;
+        console.log("del");
+        // Armazena a matrícula para uso posterior
+        document.getElementById('deleteAlunoBtn').dataset.matricula = matricula;
+    });
+});
+}
+
+
 //Retorna todos os registros
 async function buscarAlunosTodos() {
     const url = `https://localhost:5000/api/Aluno/buscarTodosAlunos`; // Replace with your API URL
@@ -94,18 +110,19 @@ async function buscarAlunosTodos() {
             date = formatDate(e.dataNascimento)
             contentLine += `
             <tr >
-                <td>${e.matricula}</td>  
+                <td class="matricula">${e.matricula}</td>  
                 <td>${e.nome}</td>
                 <td>${date}</td>
                 <td>${e.telefone}</td>
                 <td>${e.email}</td>
                 <td><a class="btnEditAluno" href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon name='edit'></box-icon></a></td>
-                <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid' name='user-x'></box-icon></a></td>
+                <td><a class="btnDeleteAluno" href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid' name='user-x'></box-icon></a></td>
             </tr>
             `        
         });
         content.innerHTML = contentLine
         adiconaEventoEditar()
+        addMatriculaModalExcluir()
     }      
 }
 
@@ -256,8 +273,52 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+
 //Buscar Aluno pelo Nome
 
+// Função para deletar aluno
+function deleteAluno(matricula) {
+    fetch(`https://localhost:5000/api/Aluno/remover/${matricula}`, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        return response.text().then(text => {
+            try {
+                return JSON.parse(text);
+            } catch (err) {
+                return text;
+            }
+        }).then(data => {
+            if (!response.ok) {
+                throw new Error(data.message || data || 'Erro ao apagar aluno.');
+            }
+            return data;
+        });
+    })
+    .then(data => {
+        const message = data.message || 'Aluno apagado com sucesso!';
+        buscarAlunosTodos(); // Atualizar a lista de alunos
+        showFlashMessage(message, 'success');
+        // Fechar modal
+        const modal = bootstrap.Modal.getInstance(document.getElementById('apagarAluno'));
+        modal.hide();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        showFlashMessage(error.message || 'Erro ao apagar aluno.', 'danger');
+    });
+}
+
+
+
+// Adicionar evento ao botão de confirmação de exclusão no modal
+document.getElementById('deleteAlunoBtn').addEventListener('click', function() {    
+    const matricula = this.dataset.matricula;
+    console.log('test');
+    deleteAluno(matricula);
+});
 
 
 
