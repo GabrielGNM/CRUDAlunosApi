@@ -2,8 +2,6 @@
 {
     public record AlunoDto
     {
-        public string? Turma { get; set; }
-        public string? Curso { get; set; }
         public string? Email { get; set; }
         public string? Endereco { get; set; }
         public long? Telefone { get; set; }
