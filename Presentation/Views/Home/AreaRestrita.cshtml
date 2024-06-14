@@ -1,0 +1,340 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/HomePage.css">
+    <title>Gerenciamento de Alunos</title>
+</head>
+
+
+<body>
+
+
+    <div class="main container" style="">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
+            <a href="/Home/HomePage"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img src="~/assets/logo.jpeg" class="d-block" alt="..." style="width: 70px; margin-right: 4px">
+
+                <p class="fs-4 text-body-tertiary">Instituto Reciclar</p>
+
+            </a>
+            <ul class="nav nav-pills ">
+
+                <li class="nav-item">
+                    <a href="/Home/HomePage" class="nav-link">
+                        <button type="button" class="btn btn-secondary">Home</button>
+                    </a>
+                </li>
+            </ul>
+        </header>
+
+        <div class="wrapper container mt-5">
+            <div class="table-title row">
+                <span class="col-6 fs-3 fw-semibold text-secondary">Relação de Alunos</span>
+                <div class="col">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col">
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-1" type="search" placeholder="Aluno" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                        <div class="col  text-center">
+                            <span class=""><a href="" data-bs-toggle="modal" data-bs-target="#formAddAluno"><box-icon
+                                        name='plus-circle' type='solid' flip='horizontal' color='rgba(30,51,88,0.78)'
+                                        size='40px'></box-icon></a></span>
+                            <p class="small">Adicionar Aluno</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="table-content mt-2">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Matricula</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data Nasc.</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="contentAlunos">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="btnEditAluno" href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon
+                                        name='edit'></box-icon></a></td>
+                            <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid'
+                                        name='user-x'></box-icon></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+        <footer class="fixed-bottom container">
+            <div style="margin-top: 30px; width: 100%">
+                <div class="bg-info-subtle">
+                    <div class="container" style="max-width: 900px; padding:20px">
+                        <div class="row text-secondary-emphasis ">
+                            <div class="col ">
+                                <div><img src="~/assets/logo.jpeg" class="d-block" alt="..."
+                                        style="width: 170px; margin-right: 4px"></div>
+                                <p class="fw-bolder" style="margin-top: 10px; font-size:20px">Instituto Reciclar</p>
+                            </div>
+                            <div class="col">
+                                <p class="fw-bold">CONTATO</p>
+
+                                <p>
+                                    Av. Presidente Altino, 973
+                                    Jaguaré – São Paulo, SP
+                                </p>
+
+                                <p>
+                                    Telefone: (11) 3768-3607
+                                    E-mail: reciclar@reciclar.org.br
+                                </p>
+
+                                <p>
+                                    Horário de Atendimento
+                                    Segunda a Sexta:
+                                    8h00 – 18h00
+                                </p>
+                            </div>
+                            <div class="col">
+                                <p class="fw-bold">NEWSLETTER</p>
+
+                                <p>Fique por dentro! Cadastre seu e-mail no campo abaixo para receber notícias e
+                                    informações
+                                    sobre a gente!</p>
+                            </div>
+                            <div class="col">
+                                <p class="fw-bold">SIGA A GENTE</p>
+
+                                <p>
+                                    <i class="fa fa-1x fa-facebook md-4" aria-hidden="true"
+                                        style="margin-right: 10px;"></i>
+                                    <i class="fa fa-1x fa-instagram" aria-hidden="true" style="margin-right: 10px;"></i>
+                                    <i class="fa fa-1x fa-linkedin" aria-hidden="true" style="margin-right: 10px;"></i>
+                                </p>
+                                <p class="fw-bold">SELOS E PREMIAÇÕES</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+
+    </div>
+
+
+
+    <!-- Modal Inserir Aluno -->
+    <div class="modal fade" id="formAddAluno" tabindex="-1" aria-labelledby="formAddAluno" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formAddAlunoLabel">Addar Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="alunoForm">
+                        <div class="mb-3">
+                            <label for="formAddNome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="formAddNome" aria-describedby="nomeHelp">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formAddCPF" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="formAddCPF" aria-describedby="CPFHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formAddDataNasc" class="form-label">Data de Nascimento</label>
+                                <input type="text" class="form-control" id="formAddDataNasc"
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formAddTelefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="formAddTelefone"
+                                    aria-describedby="TelefoneHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formAddEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="formAddEmail" aria-describedby="EmailHelp">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formAddEndereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="formAddEndereco"
+                                aria-describedby="EnderecoHelp">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formAddCurso" class="form-label">Curso</label>
+                                <input type="text" class="form-control" id="formAddCurso" aria-describedby="CursoHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formAddTurma" class="form-label">Turma</label>
+                                <input type="text" class="form-control" id="formAddTurma" aria-describedby="TurmaHelp">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="createAlunoBtn"
+                        data-bs-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- Modal Editar Aluno -->
+    <div class="modal fade" id="formEditAluno" tabindex="-1" aria-labelledby="formEditAlunoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formEditAlunoLabel">Editar Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="alunoForm">
+                        <div class="mb-3">
+                            <label for="formEditNome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="formEditNome" aria-describedby="nomeHelp">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formEditCPF" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="formEditCPF" aria-describedby="CPFHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formEditDataNasc" class="form-label">Data de Nascimento</label>
+                                <input type="text" class="form-control" id="formEditDataNasc"
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formEditTelefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="formEditTelefone"
+                                    aria-describedby="TelefoneHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formEditEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="formEditEmail"
+                                    aria-describedby="EmailHelp">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formEditEndereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="formEditEndereco"
+                                aria-describedby="EnderecoHelp">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formEditCurso" class="form-label">Curso</label>
+                                <input type="text" class="form-control" id="formEditCurso" aria-describedby="CursoHelp">
+                            </div>
+                            <div class="col">
+                                <label for="formEditTurma" class="form-label">Turma</label>
+                                <input type="text" class="form-control" id="formEditTurma" aria-describedby="TurmaHelp">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="updateAlunoBtn" data-bs-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Modal Apagar Aluno -->
+    <div class="modal fade" id="apagarAluno" tabindex="-1" aria-labelledby="apagarAlunoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="apagarAlunoLabel">Apagar Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja apagar o registro deste Aluno?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Apagar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Flash -->
+    <div class="modal fade" id="flashModal" tabindex="-1" aria-labelledby="flashModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="flashModalLabel">Mensagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="flashMessage">
+                    <!-- Mensagem será inserida aqui -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/074fbb8e37.js" crossorigin="anonymous"></script>
+
+    <script src="~/js/crudaluno.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,7 @@
 using Application.Service;
 using Domain.Interface;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,14 +9,27 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews(); // MVC controllers
 builder.Services.AddControllers(); // Web API controllers
+
+// Registering the service
 builder.Services.AddScoped<IAlunoService, AlunoService>(); // Service registration
 
+// Configuring Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API de Alunos", Version = "v1" });
-    // Você pode adicionar mais opções de configuração aqui se necessário
+    // Additional Swagger configuration can go here
 });
 
+// Configuring CORS
+builder.Services.AddCors(options =>
+{ 
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -29,24 +43,26 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
+// Enable CORS with the specified policy
+app.UseCors("AllowAll");
 
+app.UseRouting();
 app.UseAuthorization();
 
-// Configurações do Swagger
+// Swagger configurations
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API de Alunos v1");
-        c.RoutePrefix = string.Empty; // A UI do Swagger estará disponível na raiz da aplicação
+        c.RoutePrefix = string.Empty; // Swagger UI will be available at the root
     });
 }
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=HomePage}/{action=HomePage}/{id?}");
 
 app.MapControllers();
 

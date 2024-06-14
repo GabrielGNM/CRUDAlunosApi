@@ -10,5 +10,6 @@ namespace Domain.Interface
         IEnumerable<Aluno> BuscarAlunosPorNome(string nome);
         Aluno? AtualizarAluno(string matricula, AlunoDto alunoAtualizado);
         IEnumerable<Aluno> BuscarTodosAlunos();
+        string RemoverAluno(string matricula);
     }
 }

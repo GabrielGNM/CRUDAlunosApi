@@ -13,14 +13,14 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult AreaRestrita()
         {
-            return View();
+            return View("AreaRestrita");
         }
 
-        public IActionResult Privacy()
+        public IActionResult HomePage()
         {
-            return View();
+            return View("HomePage");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

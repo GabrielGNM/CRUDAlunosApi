@@ -10,18 +10,9 @@ namespace Application.Service
         private static List<Aluno> ListaAlunos = [];
         public Aluno? AtualizarAluno(string matricula, AlunoDto atualizacao)
         {
-            var alunoExistente = BuscarAlunoPorMatricula(matricula);
-            if (alunoExistente != null)
-            {
-                var alunoAtualizado = Aluno.AtualizaAluno(atualizacao, alunoExistente!, ListaAlunos);
+            var alunoExistente = BuscarAlunoPorMatricula(matricula) ?? throw new ValidationException("Aluno não encontrado no sistema.");
 
-                return alunoAtualizado;
-            }
-            else
-            {
-                return null;
-            }
-            
+            return Aluno.AtualizarAluno(atualizacao, alunoExistente!, ref ListaAlunos);
         }
 
         public Aluno? BuscarAlunoPorMatricula(string matricula)
@@ -53,6 +44,13 @@ namespace Application.Service
             if (alunoExistente != null) throw new ValidationException("Aluno já Cadastrado");
             ListaAlunos.Add(novoAluno);
             return novoAluno;            
+        }
+
+        public string RemoverAluno(string matricula)
+        {
+            var aluno = BuscarAlunoPorMatricula(matricula) ?? throw new ValidationException("Aluno não encontrado no sistema.");
+            ListaAlunos.Remove(aluno);
+            return $"Aluno: {aluno.Nome} removido do sistema.";
         }
     }
 }
