@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/HomePage.css">
     <title>Gerenciamento de Alunos</title>
 </head>
@@ -18,7 +18,7 @@
 <body>
 
 
-     <div class="main container" style="">
+    <div class="main container" style="">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
             <a href="/Home/HomePage"
                 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
@@ -46,7 +46,7 @@
                             <form class="d-flex" role="search">
                                 <input class="form-control me-1" type="search" placeholder="Aluno" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Buscar</button>
-                              </form>
+                            </form>
                         </div>
                         <div class="col  text-center">
                             <span class=""><a href="" data-bs-toggle="modal" data-bs-target="#formAddAluno"><box-icon
@@ -62,6 +62,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">Matricula</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Data Nasc.</th>
                             <th scope="col">Telefone</th>
@@ -72,12 +73,15 @@
                     </thead>
                     <tbody id="contentAlunos">
                         <tr>
-                            <td>Otto</td>
-                            <td>mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td><a href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon name='edit'></box-icon></a></td>
-                            <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid' name='user-x'></box-icon></a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a class="btnEditAluno" href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon
+                                        name='edit'></box-icon></a></td>
+                            <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid'
+                                        name='user-x'></box-icon></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -87,7 +91,7 @@
 
 
 
-        
+
 
 
 
@@ -153,15 +157,15 @@
 
 
     <!-- Modal Inserir Aluno -->
-    <div class="modal fade " id="formAddAluno" tabindex="-1"  aria-labelledby="formAddAluno" aria-hidden="true">
+    <div class="modal fade" id="formAddAluno" tabindex="-1" aria-labelledby="formAddAluno" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formAddAluno">Cadastrar Aluno</h1>
+                    <h1 class="modal-title fs-5" id="formAddAlunoLabel">Addar Aluno</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="alunoForm">
                         <div class="mb-3">
                             <label for="formAddNome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="formAddNome" aria-describedby="nomeHelp">
@@ -174,7 +178,7 @@
                             <div class="col">
                                 <label for="formAddDataNasc" class="form-label">Data de Nascimento</label>
                                 <input type="text" class="form-control" id="formAddDataNasc"
-                                    aria-describedby="DataNascHelp">
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -185,8 +189,7 @@
                             </div>
                             <div class="col">
                                 <label for="formAddEmail" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="formAddEmail"
-                                    aria-describedby="EmailHelp">
+                                <input type="email" class="form-control" id="formAddEmail" aria-describedby="EmailHelp">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -197,37 +200,39 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formAddCurso" class="form-label">Curso</label>
-                                <input type="Curso" class="form-control" id="formAddCurso"
-                                    aria-describedby="CursoHelp">
+                                <input type="text" class="form-control" id="formAddCurso" aria-describedby="CursoHelp">
                             </div>
                             <div class="col">
                                 <label for="formAddTurma" class="form-label">Turma</label>
-                                <input type="Turma" class="form-control" id="formAddTurma"
-                                    aria-describedby="TurmaHelp">
+                                <input type="text" class="form-control" id="formAddTurma" aria-describedby="TurmaHelp">
                             </div>
                         </div>
-
                     </form>
                 </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary ">Salvar</button>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="createAlunoBtn"
+                        data-bs-dismiss="modal">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Modal Inserir Aluno -->
-    <div class="modal fade " id="formEditAluno" tabindex="-1"  aria-labelledby="formEditAluno" aria-hidden="true">
+
+
+
+
+    <!-- Modal Editar Aluno -->
+    <div class="modal fade" id="formEditAluno" tabindex="-1" aria-labelledby="formEditAlunoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formEditAluno">Editar Aluno</h1>
+                    <h1 class="modal-title fs-5" id="formEditAlunoLabel">Editar Aluno</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="alunoForm">
                         <div class="mb-3">
                             <label for="formEditNome" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="formEditNome" aria-describedby="nomeHelp">
@@ -240,7 +245,7 @@
                             <div class="col">
                                 <label for="formEditDataNasc" class="form-label">Data de Nascimento</label>
                                 <input type="text" class="form-control" id="formEditDataNasc"
-                                    aria-describedby="DataNascHelp">
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -251,7 +256,7 @@
                             </div>
                             <div class="col">
                                 <label for="formEditEmail" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="formEditEmail"
+                                <input type="email" class="form-control" id="formEditEmail"
                                     aria-describedby="EmailHelp">
                             </div>
                         </div>
@@ -263,44 +268,62 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formEditCurso" class="form-label">Curso</label>
-                                <input type="Curso" class="form-control" id="formEditCurso"
-                                    aria-describedby="CursoHelp">
+                                <input type="text" class="form-control" id="formEditCurso" aria-describedby="CursoHelp">
                             </div>
                             <div class="col">
                                 <label for="formEditTurma" class="form-label">Turma</label>
-                                <input type="Turma" class="form-control" id="formEditTurma"
-                                    aria-describedby="TurmaHelp">
+                                <input type="text" class="form-control" id="formEditTurma" aria-describedby="TurmaHelp">
                             </div>
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary ">Salvar</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" id="updateAlunoBtn" data-bs-dismiss="modal">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
 
+
+
     <!-- Modal Apagar Aluno -->
-<div class="modal fade" id="apagarAluno" tabindex="-1" aria-labelledby="apagarAlunoLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="apagarAlunoLabel">Apagar Aluno</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Deseja apagar o registro deste Aluno?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-danger">Apagar</button>
-      </div>
+    <div class="modal fade" id="apagarAluno" tabindex="-1" aria-labelledby="apagarAlunoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="apagarAlunoLabel">Apagar Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja apagar o registro deste Aluno?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger">Apagar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+
+
+    <!-- Modal Flash -->
+    <div class="modal fade" id="flashModal" tabindex="-1" aria-labelledby="flashModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="flashModalLabel">Mensagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="flashMessage">
+                    <!-- Mensagem será inserida aqui -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -313,4 +336,5 @@
 
     <script src="~/js/crudaluno.js"></script>
 </body>
+
 </html>
