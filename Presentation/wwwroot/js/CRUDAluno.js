@@ -41,8 +41,8 @@ function fillForm(aluno) {
     document.getElementById('formEditTelefone').value = aluno.telefone;
     document.getElementById('formEditEmail').value = aluno.email;
     document.getElementById('formEditEndereco').value = aluno.endereco;
-    document.getElementById('formEditCurso').value = aluno.curso;
-    document.getElementById('formEditTurma').value = aluno.turma;
+    // document.getElementById('formEditCurso').value = aluno.curso;
+    // document.getElementById('formEditTurma').value = aluno.turma;
 }
 
 // Adicionar evento de clique aos botões de edição após a busca
@@ -84,7 +84,7 @@ function adiconaEventoEditar() {
 
 //Retorna todos os registros
 async function buscarAlunosTodos() {
-    const url = `https://localhost:5000/api/Aluno/alunos`; // Replace with your API URL
+    const url = `https://localhost:5000/api/Aluno/buscarTodosAlunos`; // Replace with your API URL
     const resultado = await requisicaoAPI(url, 'GET');
 
     if (Array.isArray(resultado)) {
@@ -127,8 +127,8 @@ document.getElementById('createAlunoBtn').addEventListener('click', function() {
     const telefone = document.getElementById('formAddTelefone').value;
     const email = document.getElementById('formAddEmail').value;
     const endereco = document.getElementById('formAddEndereco').value;
-    const curso = document.getElementById('formAddCurso').value;
-    const turma = document.getElementById('formAddTurma').value;
+    // const curso = document.getElementById('formAddCurso').value;
+    // const turma = document.getElementById('formAddTurma').value;
 
     const aluno = {
         nome,
@@ -137,8 +137,8 @@ document.getElementById('createAlunoBtn').addEventListener('click', function() {
         telefone,
         email,
         endereco,
-        curso,
-        turma
+        // curso,
+        // turma
     };
 
     fetch('https://localhost:5000/api/Aluno/cadastrar', {
@@ -150,8 +150,9 @@ document.getElementById('createAlunoBtn').addEventListener('click', function() {
     })
     .then(response => {
         if (!response.ok) {
-            return response.json().then(error => {
-                throw new Error(error.message || 'Erro ao cadastrar aluno.');
+            console.log(response)
+            return response.text().then(error => {
+                throw new Error(error || 'Erro ao cadastrar aluno.');
             });
         }
         return response.json();
@@ -180,9 +181,9 @@ function showFlashMessage(message, type) {
 
 
 
-//editar Aluno
+//Editar e Excluir Alunos
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM completamente carregado e analisado');
+    // console.log('DOM completamente carregado e analisado');
 
     // Função para formatar data
     function formatDate(dateStr) {
@@ -198,8 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     
-
-    // Adicionar evento de clique ao botão de salvar
+    //Editar Aluno
+    // Adicionar evento de clique ao botão de salvar 
     document.getElementById('updateAlunoBtn').addEventListener('click', function() {
         const matricula = this.getAttribute('data-matricula');
         console.log(matricula)
@@ -210,10 +211,10 @@ document.addEventListener('DOMContentLoaded', function() {
             telefone: document.getElementById('formEditTelefone').value,
             email: document.getElementById('formEditEmail').value,
             endereco: document.getElementById('formEditEndereco').value,
-            curso: document.getElementById('formEditCurso').value,
-            turma: document.getElementById('formEditTurma').value
+            // curso: document.getElementById('formEditCurso').value,
+            // turma: document.getElementById('formEditTurma').value
         };
-        console.log(aluno)
+        // console.log(aluno)
 
         fetch(`https://localhost:5000/api/Aluno/atualizar/${matricula}`, {
             method: 'PUT',
@@ -224,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (!response.ok) {
-                return response.json().then(error => {
+                return response.text().then(error => {
                     throw new Error(error.message || 'Erro ao atualizar aluno.');
                 });
             }           
@@ -240,6 +241,8 @@ document.addEventListener('DOMContentLoaded', function() {
             showFlashMessage(error.message, 'danger');
         });
     });
+
+
 
     // Função para mostrar mensagem flash
     function showFlashMessage(message, type) {
