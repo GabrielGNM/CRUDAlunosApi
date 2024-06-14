@@ -55,11 +55,29 @@ public class Aluno
             throw new ValidationException("CPF/CNPJ é obrigatório.");
         }
         if (aluno.Telefone == null) throw new ValidationException("Telefone é obrigatorio.");
-         else if (aluno.Telefone.ToString()!.Length < 11) throw new ValidationException("Telefone deve conter pelo menos 11 dígitos.ex:31912345678");
-        
-        if (aluno.DataNascimento == default(DateTime))
-        {
+        else if (aluno.Telefone.ToString()!.Length < 11) throw new ValidationException("Telefone deve conter pelo menos 11 dígitos.ex:31912345678");
+
+        if (aluno.DataNascimento == null)
             throw new ValidationException("Data de nascimento é obrigatória.");
+        else if (aluno.DataNascimento == default(DateTime))
+            throw new ValidationException("Data de nascimento com formato incorreto.");
+    }
+    private static void ValidarAtualizacaoAluno(AlunoDto aluno)
+    {
+        if (aluno.Nome != null){
+            if (aluno!.Nome.Split(' ').Length < 2)
+                throw new ValidationException("Nome deve conter pelo menos um nome e um sobrenome.");
+        }
+        if (aluno.Telefone != null)
+        {
+            if (aluno!.Telefone.ToString()!.Length < 11)
+                throw new ValidationException("Telefone deve conter pelo menos 11 dígitos.ex:31912345678");
+        }
+        
+        if (aluno.DataNascimento != null)
+        {
+            if (aluno.DataNascimento == default(DateTime))
+                throw new ValidationException("Data de nascimento com formato incorreto.");
         }
     }
     private static string CriaMatricula(string nome, DateTime dataNascimento, string CpfCnpj)
@@ -76,16 +94,19 @@ public class Aluno
         return $"{primeiroNome}.{primeirosTresCpfCnpj}{ultimoNome}{ultimosTresCpfCnpj}-{dataNascimentoFormatada}";
     }
 
-    public static Aluno AtualizaAluno(AlunoDto atualizacao, Aluno alunoExistente, List<Aluno> ListaAlunos)
+    public static Aluno AtualizarAluno(AlunoDto atualizacao, Aluno alunoExistente, ref List<Aluno> ListaAlunos)
     {
-        alunoExistente.Email = atualizacao.Email ?? alunoExistente.Email;
-        alunoExistente.Endereco = atualizacao.Endereco ?? alunoExistente.Endereco;
-        alunoExistente.Telefone = atualizacao.Telefone ?? alunoExistente.Telefone;
-        alunoExistente.CpfCnpj = atualizacao.CpfCnpj ?? alunoExistente.CpfCnpj;
-        alunoExistente.Nome = atualizacao.Nome ?? alunoExistente.Nome;
-        alunoExistente.DataNascimento = atualizacao.DataNascimento ?? alunoExistente.DataNascimento;
-        
-        return alunoExistente;
+        ValidarAtualizacaoAluno(atualizacao);
+        Aluno aluno = ListaAlunos.FirstOrDefault(alunoExistente);
+
+        aluno.Email = atualizacao.Email ?? alunoExistente.Email;
+        aluno.Endereco = atualizacao.Endereco ?? alunoExistente.Endereco;
+        aluno.Telefone = atualizacao.Telefone ?? alunoExistente.Telefone;
+        aluno.CpfCnpj = atualizacao.CpfCnpj ?? alunoExistente.CpfCnpj;
+        aluno.Nome = atualizacao.Nome ?? alunoExistente.Nome;
+        aluno.DataNascimento = atualizacao.DataNascimento ?? alunoExistente.DataNascimento;
+
+        return aluno;
     }
     private static string RemoveAcentos(string texto)
     {

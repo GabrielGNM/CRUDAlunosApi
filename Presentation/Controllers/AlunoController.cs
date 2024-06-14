@@ -8,35 +8,36 @@ namespace Presentation.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController : ControllerBase
+    public class AlunoController(IAlunoService alunoService) : ControllerBase
     {
-        private readonly IAlunoService _alunoService;
-
-        public AlunoController(IAlunoService alunoService)
-        {
-            _alunoService = alunoService;
-        }
+        private readonly IAlunoService _alunoService = alunoService;
 
         [HttpGet("buscar/{nome}")]
         public ActionResult<IEnumerable<Aluno>> GetAlunoByNome(string nome)
         {
-            var resultado = _alunoService.BuscarAlunosPorNome(nome);
-            if (resultado == null || !resultado.Any())
+            try
             {
-                return NotFound("Aluno não encontrado.");
+                var resultado = _alunoService.BuscarAlunosPorNome(nome);
+                return Ok(resultado);
             }
-            return Ok(resultado);
+            catch(ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
-        [HttpGet("alunos")]
+        [HttpGet("buscarTodosAlunos")]
         public ActionResult<IEnumerable<Aluno>> BuscarTodos()
         {
-            var alunos = _alunoService.BuscarTodosAlunos();
-            if (alunos == null || !alunos.Any())
+            try
             {
-                return NotFound("Nenhum aluno encontrado.");
+                var alunos = _alunoService.BuscarTodosAlunos();
+                return Ok(alunos);
             }
-            return Ok(alunos);
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("cadastrar")]
@@ -45,7 +46,7 @@ namespace Presentation.Controllers
             try
             {
                 var alunoCadastrado = _alunoService.CadastrarAluno(novoAluno);
-                return CreatedAtAction(nameof(GetAlunoById), new { id = alunoCadastrado.Matricula }, alunoCadastrado);
+                return Ok(alunoCadastrado);
             }
             catch (ValidationException ex)
             {
@@ -56,23 +57,42 @@ namespace Presentation.Controllers
         [HttpGet("{matricula}")]
         public ActionResult<Aluno> GetAlunoById(string matricula)
         {
-            var aluno = _alunoService.BuscarAlunoPorMatricula(matricula);
-            if (aluno == null)
+            try
             {
-                return NotFound("Aluno não encontrado.");
+                var aluno = _alunoService.BuscarAlunoPorMatricula(matricula);
+                return Ok(aluno);
             }
-            return Ok(aluno);
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("atualizar/{matricula}")]
-        public ActionResult AtualizarAluno(string matricula, [FromBody] AlunoDto alunoAtualizado)
+        public ActionResult<Aluno> AtualizarAluno(string matricula, [FromBody] AlunoDto alunoAtualizado)
         {
-            var aluno = _alunoService.AtualizarAluno(matricula, alunoAtualizado);
-            if (aluno == null)
+            try
             {
-                return NotFound("Aluno não encontrado.");
+            var aluno = _alunoService.AtualizarAluno(matricula, alunoAtualizado);
+            return Ok(aluno);
             }
-            return NoContent();
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("remover/{matricula}")]
+        public ActionResult RemoverAluno(string matricula)
+        {
+            try
+            {
+            var response = _alunoService.RemoverAluno(matricula);
+            return Ok(response);
+            }
+            catch (ValidationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
