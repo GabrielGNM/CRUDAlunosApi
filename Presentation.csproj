@@ -9,6 +9,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Application\**" />
+    <Compile Remove="Domain\**" />
+    <Compile Remove="Models\**" />
+    <Content Remove="Application\**" />
+    <Content Remove="Domain\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="Application\**" />
+    <EmbeddedResource Remove="Domain\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Application\**" />
+    <None Remove="Domain\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
 	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
 	  <PrivateAssets>all</PrivateAssets>
 	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -18,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

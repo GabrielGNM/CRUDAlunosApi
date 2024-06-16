@@ -1,5 +1,5 @@
+using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Presentation.Models;
 using System.Diagnostics;
 
 namespace WebApplication1.Controllers
