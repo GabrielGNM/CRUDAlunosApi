@@ -40,22 +40,13 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: .net-app
       
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5F5D92DDDEC9432894271A5EF06797D9 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C67A41AD06814C5F990CC5F3FC8AF0B2 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_51501DC42C6C451DBE2C4D7C2CBCDA43 }}
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -63,4 +54,4 @@ jobs:
           app-name: 'OngReciclar'
           slot-name: 'Production'
           package: .
-          
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_406216AFE2C24573A15B65296D157474 }}
