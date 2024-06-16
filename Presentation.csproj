@@ -11,16 +11,24 @@
   <ItemGroup>
     <Compile Remove="Application\**" />
     <Compile Remove="Domain\**" />
+    <Compile Remove="Infra\**" />
     <Compile Remove="Models\**" />
+    <Compile Remove="Presentation\**" />
     <Content Remove="Application\**" />
     <Content Remove="Domain\**" />
+    <Content Remove="Infra\**" />
     <Content Remove="Models\**" />
+    <Content Remove="Presentation\**" />
     <EmbeddedResource Remove="Application\**" />
     <EmbeddedResource Remove="Domain\**" />
+    <EmbeddedResource Remove="Infra\**" />
     <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Presentation\**" />
     <None Remove="Application\**" />
     <None Remove="Domain\**" />
+    <None Remove="Infra\**" />
     <None Remove="Models\**" />
+    <None Remove="Presentation\**" />
   </ItemGroup>
 
   <ItemGroup>
