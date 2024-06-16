@@ -62,7 +62,7 @@ function adiconaEventoEditar() {
             console.log(aluno);
             // console.log("Matrícula do aluno:", aluno.matricula);
 
-            fetch(`https://localhost:5000/api/Aluno/${aluno.matricula}`, {
+            fetch(`https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/${aluno.matricula}`, {
                 method: 'GET',
             })
             .then(response => {
@@ -105,7 +105,7 @@ document.querySelectorAll('.btnDeleteAluno').forEach(button => {
 
 //Retorna todos os registros
 async function buscarAlunosTodos() {
-    const url = `https://localhost:5000/api/Aluno/buscarTodosAlunos`; // Replace with your API URL
+    const url = `https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/buscarTodosAlunos`; // Replace with your API URL
     const resultado = await requisicaoAPI(url, 'GET');
 
     if (Array.isArray(resultado)) {
@@ -163,7 +163,7 @@ document.getElementById('createAlunoBtn').addEventListener('click', function() {
         // turma
     };
 
-    fetch('https://localhost:5000/api/Aluno/cadastrar', {
+    fetch('https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/cadastrar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         // console.log(aluno)
 
-        fetch(`https://localhost:5000/api/Aluno/atualizar/${matricula}`, {
+        fetch(`https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/atualizar/${matricula}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -290,7 +290,7 @@ updateAluno()
 
 // Função para deletar aluno
 function deleteAluno(matricula) {
-    fetch(`https://localhost:5000/api/Aluno/remover/${matricula}`, {
+    fetch(`https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/remover/${matricula}`, {
         method: 'DELETE'
     })
     .then(response => {
@@ -370,7 +370,7 @@ function showSmallMessage(message, type) {
 
 // Função para buscar aluno por nome
 function buscarAlunoPorNome(nome) {
-    fetch(`https://localhost:5000/api/Aluno/buscar/${nome}`)
+    fetch(`https://ongreciclar-2adc64114ee8.herokuapp.com/api/Aluno/buscar/${nome}`)
         .then(response => response.json())
         .then(data => {
             if (data && data.length > 0) {

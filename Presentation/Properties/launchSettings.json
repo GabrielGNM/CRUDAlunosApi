@@ -4,6 +4,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "Home/HomePage",
+
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
