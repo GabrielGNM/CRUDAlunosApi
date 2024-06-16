@@ -5,7 +5,6 @@ namespace Domain.Models.DB;
 
 public class Aluno
 {
-    public Guid Id { get; set; }
     public required string Matricula { get; set; }
     public string? Email { get; set; }
     public string? Endereco { get; set; }
@@ -21,7 +20,7 @@ public class Aluno
         var dataNascimento = aluno.DataNascimento == null ? throw new ValidationException("Data de Nascimento não informada.") : (DateTime)aluno.DataNascimento;
         var telefone = aluno.Telefone == null ? throw new ValidationException("Telefone não informado.") : (long)aluno.Telefone;
 
-        var matricula = CriaMatricula(aluno.Nome!, dataNascimento, aluno.CpfCnpj!);
+        var matricula = CriaMatricula(aluno.Nome!);
 
         // Remove acentos e caracteres especiais
         matricula = RemoveAcentos(matricula);
@@ -29,7 +28,6 @@ public class Aluno
         return new Aluno
         {
 
-            Id = Guid.NewGuid(),
             Matricula = matricula,
             Email = aluno.Email,
             Endereco = aluno.Endereco,
@@ -80,24 +78,24 @@ public class Aluno
                 throw new ValidationException("Data de nascimento com formato incorreto.");
         }
     }
-    private static string CriaMatricula(string nome, DateTime dataNascimento, string CpfCnpj)
+    private static string CriaMatricula(string nome)
     {
-        string cleanedCpfCnpj = Regex.Replace(CpfCnpj, "[^a-zA-Z0-9]", "");
+        Random random = new();
 
-        var primeirosTresCpfCnpj = cleanedCpfCnpj[..3];
-        var ultimosTresCpfCnpj = cleanedCpfCnpj[3..];
+        // Gera um número aleatório entre 1 e 999999
+        int matriculaNumero = random.Next(1, 1000000);
+        // Formata o número com 6 dígitos, preenchendo com zeros à esquerda
+        string matriculaNumeroFormatado = matriculaNumero.ToString("D6");
         var nomes = nome.Split(' ');
         var primeiroNome = nomes.First();
-        var ultimoNome = nomes.Last();
-        var dataNascimentoFormatada = dataNascimento.ToString("ddMMyyyy");
 
-        return $"{primeiroNome}.{primeirosTresCpfCnpj}{ultimoNome}{ultimosTresCpfCnpj}-{dataNascimentoFormatada}";
+        return $"{primeiroNome}.{matriculaNumeroFormatado}";
     }
 
     public static Aluno AtualizarAluno(AlunoDto atualizacao, Aluno alunoExistente, ref List<Aluno> ListaAlunos)
     {
         ValidarAtualizacaoAluno(atualizacao);
-        Aluno aluno = ListaAlunos.FirstOrDefault(alunoExistente);
+        var aluno = ListaAlunos.FirstOrDefault(a => a == alunoExistente);
 
         aluno.Email = atualizacao.Email ?? alunoExistente.Email;
         aluno.Endereco = atualizacao.Endereco ?? alunoExistente.Endereco;
