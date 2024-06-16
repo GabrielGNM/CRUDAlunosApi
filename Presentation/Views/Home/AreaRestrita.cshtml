@@ -43,10 +43,12 @@
                 <div class="col">
                     <div class="row d-flex justify-content-between">
                         <div class="col">
-                            <form class="d-flex" role="search">
-                                <input class="form-control me-1" type="search" placeholder="Aluno" aria-label="Search">
+                            <form class="d-flex" id="searchAlunoForm" role="search">
+                                <input class="form-control me-1" type="search" id="searchAlunoInput" placeholder="Aluno"
+                                    aria-label="Search" style="width: 220px">
                                 <button class="btn btn-outline-success" type="submit">Buscar</button>
                             </form>
+                            <div id="flashSmallMessage" class="mt-2 small"></div>
                         </div>
                         <div class="col  text-center">
                             <span class=""><a href="" data-bs-toggle="modal" data-bs-target="#formAddAluno"><box-icon
@@ -78,8 +80,8 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a class="btnEditAluno" href="" data-bs-toggle="modal" data-bs-target="#formEditAluno"><box-icon
-                                        name='edit'></box-icon></a></td>
+                            <td><a class="btnEditAluno" href="" data-bs-toggle="modal"
+                                    data-bs-target="#formEditAluno"><box-icon name='edit'></box-icon></a></td>
                             <td><a href="" data-bs-toggle="modal" data-bs-target="#apagarAluno"><box-icon type='solid'
                                         name='user-x'></box-icon></a></td>
                         </tr>
@@ -161,41 +163,44 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="formAddAlunoLabel">Addar Aluno</h1>
+                    <h1 class="modal-title fs-5" id="formAddAlunoLabel">Adicionar Aluno</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="alunoForm">
                         <div class="mb-3">
                             <label for="formAddNome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="formAddNome" aria-describedby="nomeHelp">
+                            <input type="text" class="form-control" id="formAddNome" aria-describedby="nomeHelp"
+                                required>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formAddCPF" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="formAddCPF" aria-describedby="CPFHelp">
+                                <input type="text" class="form-control" id="formAddCPF" aria-describedby="CPFHelp"
+                                    required>
                             </div>
                             <div class="col">
                                 <label for="formAddDataNasc" class="form-label">Data de Nascimento</label>
                                 <input type="text" class="form-control" id="formAddDataNasc"
-                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formAddTelefone" class="form-label">Telefone</label>
                                 <input type="text" class="form-control" id="formAddTelefone"
-                                    aria-describedby="TelefoneHelp">
+                                    aria-describedby="TelefoneHelp" required>
                             </div>
                             <div class="col">
                                 <label for="formAddEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="formAddEmail" aria-describedby="EmailHelp">
+                                <input type="email" class="form-control" id="formAddEmail" aria-describedby="EmailHelp"
+                                    required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="formAddEndereco" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="formAddEndereco"
-                                aria-describedby="EnderecoHelp">
+                            <input type="text" class="form-control" id="formAddEndereco" aria-describedby="EnderecoHelp"
+                                required>
                         </div>
                         <div class="row mb-3">
                             <!--
@@ -237,53 +242,107 @@
                     <form id="alunoForm">
                         <div class="mb-3">
                             <label for="formEditNome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="formEditNome" aria-describedby="nomeHelp">
+                            <input type="text" class="form-control" id="formEditNome" aria-describedby="nomeHelp"
+                                required>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formEditCPF" class="form-label">CPF</label>
-                                <input type="text" class="form-control" id="formEditCPF" aria-describedby="CPFHelp">
+                                <input type="text" class="form-control" id="formEditCPF" aria-describedby="CPFHelp"
+                                    required>
                             </div>
                             <div class="col">
                                 <label for="formEditDataNasc" class="form-label">Data de Nascimento</label>
                                 <input type="text" class="form-control" id="formEditDataNasc"
-                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa">
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <label for="formEditTelefone" class="form-label">Telefone</label>
                                 <input type="text" class="form-control" id="formEditTelefone"
-                                    aria-describedby="TelefoneHelp">
+                                    aria-describedby="TelefoneHelp" required>
                             </div>
                             <div class="col">
                                 <label for="formEditEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="formEditEmail"
-                                    aria-describedby="EmailHelp">
+                                <input type="email" class="form-control" id="formEditEmail" aria-describedby="EmailHelp"
+                                    required>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="formEditEndereco" class="form-label">Endereço</label>
                             <input type="text" class="form-control" id="formEditEndereco"
-                                aria-describedby="EnderecoHelp">
+                                aria-describedby="EnderecoHelp" required>
                         </div>
-                        <!--
-                        <div class="row mb-3">
-                            <div class="col">
-                                <label for="formEditCurso" class="form-label">Curso</label>
-                                <input type="text" class="form-control" id="formEditCurso" aria-describedby="CursoHelp">
-                            </div>
-                            <div class="col">
-                                <label for="formEditTurma" class="form-label">Turma</label>
-                                <input type="text" class="form-control" id="formEditTurma" aria-describedby="TurmaHelp">
-                            </div>
-                        </div>
-                        -->
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" id="updateAlunoBtn" data-bs-dismiss="modal">Salvar</button>
+                    <button type="button" class="btn btn-primary" id="updateAlunoBtn"
+                        data-bs-dismiss="modal">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal retorno Busca Aluno -->
+    <div class="modal fade" id="formBuscarAluno" tabindex="-1" aria-labelledby="formBuscarAlunoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="formBuscarAlunoLabel">Buscar Aluno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="alunoForm">
+                        <div class="mb-3">
+                            <label for="formBuscarNome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="formBuscarNome" aria-describedby="nomeHelp"
+                                disabled>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formBuscarCPF" class="form-label">CPF</label>
+                                <input type="text" class="form-control" id="formBuscarCPF" aria-describedby="CPFHelp"
+                                    disabled>
+                            </div>
+                            <div class="col">
+                                <label for="formBuscarDataNasc" class="form-label">Data de Nascimento</label>
+                                <input type="text" class="form-control" id="formBuscarDataNasc"
+                                    aria-describedby="DataNascHelp" placeholder="dd/mm/aaaa" disabled>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="formBuscarTelefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="formBuscarTelefone"
+                                    aria-describedby="TelefoneHelp" disabled>
+                            </div>
+                            <div class="col">
+                                <label for="formBuscarEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="formBuscarEmail"
+                                    aria-describedby="EmailHelp" disabled>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formBuscarEndereco" class="form-label">Endereço</label>
+                            <input type="text" class="form-control" id="formBuscarEndereco"
+                                aria-describedby="EnderecoHelp" disabled>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <div class="ms-auto">
+                        <button type="button" class="btn btn-link" id="previousAlunoBtn">
+                            <box-icon name='skip-previous' color='rgba(30,51,88,0.78)' size='40px'></box-icon>
+                        </button>
+                        <button type="button" class="btn btn-link" id="nextAlunoBtn">
+                            <box-icon name='skip-next' color='rgba(30,51,88,0.78)' size='40px'></box-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -304,7 +363,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger" id="deleteAlunoBtn">Apagar</button>
+                    <button type="button" class="btn btn-danger" id="deleteAlunoBtn"
+                        data-bs-dismiss="modal">Apagar</button>
                 </div>
             </div>
         </div>
